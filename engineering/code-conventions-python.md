@@ -208,7 +208,7 @@ async def now_playing(
     return Page.of(films, page)
 ```
 
-- Use `AsyncSession` and `httpx.AsyncClient` throughout. Never `requests` in request
+- Use `AsyncSession` and `httpx2.AsyncClient` throughout. Never `requests` in request
   handling.
 - CPU-bound work — which includes seat scoring for a large auditorium — goes through
   `anyio.to_thread.run_sync` so it doesn't stall the event loop:

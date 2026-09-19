@@ -40,9 +40,9 @@ All three as siblings, so relative paths in these docs work:
 
 ```bash
 mkdir -p ~/Startup/goldseats && cd ~/Startup/goldseats
-git clone https://github.com/goldseats/goldseats-api.git
-git clone https://github.com/goldseats/goldseats-web.git
-git clone https://github.com/goldseats/goldseats-docs.git
+git clone https://github.com/Irukkai/goldseats-api.git
+git clone https://github.com/Irukkai/goldseats-web.git
+git clone https://github.com/Irukkai/goldseats-docs.git
 ```
 
 Replace `goldseats` in those URLs with the actual org name if it differs.

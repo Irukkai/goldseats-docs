@@ -37,7 +37,7 @@ committed; only `.env.example` files are.
 
 | Repo | Contents | Stack |
 | --- | --- | --- |
-| `goldseats-web` | Marketing page, home page, film detail, seat map, 3D seat view, chat UI | Next.js 15 (App Router), TypeScript, Tailwind CSS, react-three-fiber |
+| `goldseats-web` | Marketing page, home page, film detail, seat map, 3D seat view, chat UI | Next.js 16 (App Router), TypeScript, Tailwind CSS, react-three-fiber |
 | `goldseats-api` | REST API, seat scoring engine, TMDB ingestion, theatre seeding CLI, chatbot tool server | Python 3.12, FastAPI, SQLAlchemy 2.0, Alembic, Postgres/SQLite, Redis |
 | `goldseats-docs` | This repository | Markdown |
 
@@ -45,13 +45,13 @@ Clone all three as siblings:
 
 ```bash
 cd ~/Startup/goldseats
-git clone https://github.com/goldseats/goldseats-web.git
-git clone https://github.com/goldseats/goldseats-api.git
-git clone https://github.com/goldseats/goldseats-docs.git
+git clone https://github.com/Irukkai/goldseats-web.git
+git clone https://github.com/Irukkai/goldseats-api.git
+git clone https://github.com/Irukkai/goldseats-docs.git
 ```
 
-> Replace `goldseats` in those URLs with the actual GitHub org name if it differs. See
-> [Open decisions](#open-decisions).
+The GitHub organization is [`Irukkai`](https://github.com/Irukkai) — Tamil for
+"seat". All three repositories are public.
 
 ---
 
@@ -118,7 +118,7 @@ These are settled. Do not re-open them in a pull request; open an ADR that super
 the existing one instead (see [ADR-0001](architecture/adr/0001-record-architecture-decisions.md)).
 
 - **Three public repos** in one org — free branch protection and CI.
-- **Next.js 15 App Router + TypeScript + Tailwind** for web. npm, not pnpm or yarn.
+- **Next.js 16 App Router + TypeScript + Tailwind** for web. npm, not pnpm or yarn.
 - **Python 3.12 + FastAPI + SQLAlchemy 2.0 + Alembic** for the API. pip + `requirements.txt`.
 - **SQLite by default locally, Postgres in production**, switched purely by `DATABASE_URL`. Docker is not installed on the founder's machine, so a zero-container local setup is a hard requirement. See [ADR-0002](architecture/adr/0002-stack-selection.md).
 - **Manually seeded theatre data. No scraping.** See [ADR-0003](architecture/adr/0003-manual-seed-theatre-data.md).
@@ -144,11 +144,13 @@ Vulnerability reporting is in [`SECURITY.md`](SECURITY.md).
 
 Tracked here so they don't get lost:
 
-- **GitHub org name.** Docs assume `goldseats` in all URLs. If the org ends up named
-  something else, a single find-and-replace across this repo fixes it.
 - **Hosting provider for `goldseats-web`.** [`operations/environments.md`](operations/environments.md)
   assumes Netlify continuity under a *new, owned* account; Vercel is the obvious
-  alternative given Next.js 15. Decided at [M9](product/milestones/M9.md) latest.
+  alternative. Decided at [M9](product/milestones/M9.md) latest.
+- **Launch scope.** Whether v1 requires M6 through M8, or whether M5 plus M9 is a
+  legitimate launch. [`product/roadmap.md`](product/roadmap.md) deliberately does not
+  force an answer.
+- **Which auditoriums to seed first** in [M2](product/milestones/M2.md).
 - **Which instruct model** (Llama vs Mistral) the chatbot serves. Benchmarked during
   [M7](product/milestones/M7.md), not before.
 

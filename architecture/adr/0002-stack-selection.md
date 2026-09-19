@@ -8,6 +8,24 @@
 
 ---
 
+## Amendment, 2026-09-18
+
+The decision below names Next.js 15 because that was current when it was written.
+The web app now runs **Next.js 16**. This is not a superseding decision — the
+choice being recorded here is Next.js with the App Router, and that stands. Only
+the major version moved.
+
+The bump was forced rather than elective: a high-severity PostCSS advisory
+(arbitrary file read via an attacker-controlled `sourceMappingURL`) is reachable
+through Next's build tooling on 15, and the fix ships in 16. Three things broke
+in the upgrade — `eslint-config-next` 16 dropped the `FlatCompat` shim, Vitest 4
+transforms with oxc instead of esbuild, and jsdom 30 needs Node 22 — all handled
+in the web repository rather than here.
+
+Read every "Next.js 15" below as "Next.js 16".
+
+---
+
 ## Context
 
 GoldSeats is being built by one engineer, pre-revenue, from an existing base of two working

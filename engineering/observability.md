@@ -131,7 +131,7 @@ almost nothing — errors go to Sentry, and `console.log` in a merged PR is a re
 
 ## Tracing
 
-OpenTelemetry, auto-instrumented for FastAPI, SQLAlchemy, `httpx`, and Redis, plus manual
+OpenTelemetry, auto-instrumented for FastAPI, SQLAlchemy, `httpx2`, and Redis, plus manual
 spans on the parts of the system we actually care about.
 
 ```python

@@ -1,6 +1,6 @@
 # TypeScript and React Conventions (`goldseats-web`)
 
-Applies to everything in `goldseats-web`: Next.js 15 App Router, TypeScript strict mode,
+Applies to everything in `goldseats-web`: Next.js 16 App Router, TypeScript strict mode,
 Tailwind CSS, react-three-fiber. Enforced by ESLint + Prettier in CI; anything not
 mechanically enforceable is a review item under [`code-review.md`](code-review.md).
 

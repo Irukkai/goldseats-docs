@@ -44,7 +44,7 @@ Closes #
 
 ## Definition of done
 
-Full checklist: [`engineering/definition-of-done.md`](https://github.com/goldseats/goldseats-docs/blob/main/engineering/definition-of-done.md)
+Full checklist: [`engineering/definition-of-done.md`](https://github.com/Irukkai/goldseats-docs/blob/main/engineering/definition-of-done.md)
 
 - [ ] Acceptance criteria on the issue are met — all of them
 - [ ] `lint`, `typecheck`, `test`, `build` pass **locally**
@@ -61,7 +61,7 @@ Full checklist: [`engineering/definition-of-done.md`](https://github.com/goldsea
 
 <!-- Delete if this is web-only. -->
 
-- [ ] Follows [api-design-guidelines](https://github.com/goldseats/goldseats-docs/blob/main/engineering/api-design-guidelines.md): plural nouns, `/v1/`, envelope shape, problem-detail errors
+- [ ] Follows [api-design-guidelines](https://github.com/Irukkai/goldseats-docs/blob/main/engineering/api-design-guidelines.md): plural nouns, `/v1/`, envelope shape, problem-detail errors
 - [ ] OpenAPI entry has a summary, description, and response models for every status code
 - [ ] Pydantic schemas for request and response — no raw dicts returned
 - [ ] List endpoints paginated with a deterministic `order_by` ending in `id`
@@ -79,7 +79,7 @@ Full checklist: [`engineering/definition-of-done.md`](https://github.com/goldsea
 - [ ] `downgrade()` implemented; round-trip test passes
 - [ ] Backwards compatible with deployed code. Expand/contract step: **expand / switch / contract**
 - [ ] Runs on **both** SQLite and Postgres; parity CI job green
-- [ ] [`architecture/data-model.md`](https://github.com/goldseats/goldseats-docs/blob/main/architecture/data-model.md) updated, including the ER diagram
+- [ ] [`architecture/data-model.md`](https://github.com/Irukkai/goldseats-docs/blob/main/architecture/data-model.md) updated, including the ER diagram
 - [ ] Indexes considered for every new FK and every filtered column
 - [ ] One migration in this PR, not two
 
@@ -114,8 +114,8 @@ Full checklist: [`engineering/definition-of-done.md`](https://github.com/goldsea
 - [ ] Tailwind tokens only. No raw hex values.
 - [ ] Keyboard navigable with a visible focus ring
 - [ ] No information conveyed by colour alone
-- [ ] axe clean; meets [accessibility](https://github.com/goldseats/goldseats-docs/blob/main/engineering/accessibility.md)
-- [ ] Within [performance budgets](https://github.com/goldseats/goldseats-docs/blob/main/engineering/performance-budgets.md); Lighthouse ≥ 90
+- [ ] axe clean; meets [accessibility](https://github.com/Irukkai/goldseats-docs/blob/main/engineering/accessibility.md)
+- [ ] Within [performance budgets](https://github.com/Irukkai/goldseats-docs/blob/main/engineering/performance-budgets.md); Lighthouse ≥ 90
 - [ ] API types generated, not hand-written
 - [ ] Empty states designed
 - [ ] Error copy written for the user, with the `request_id` quietly surfaced
@@ -157,7 +157,7 @@ Full checklist: [`engineering/definition-of-done.md`](https://github.com/goldsea
 - [ ] `robots.txt` checked and respected
 - [ ] Licence confirmed
 - [ ] Attribution implemented **in this PR**
-- [ ] Added to the source register in [`legal/data-sources-policy.md`](https://github.com/goldseats/goldseats-docs/blob/main/legal/data-sources-policy.md)
+- [ ] Added to the source register in [`legal/data-sources-policy.md`](https://github.com/Irukkai/goldseats-docs/blob/main/legal/data-sources-policy.md)
 - [ ] ADR written if material
 
 ---

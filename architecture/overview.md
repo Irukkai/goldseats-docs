@@ -14,7 +14,7 @@ and that's a pure function.
 ```mermaid
 flowchart TD
   subgraph client["Browser"]
-    web["goldseats-web<br/>Next.js 15 App Router"]
+    web["goldseats-web<br/>Next.js 16 App Router"]
     threeD["3D seat view<br/>react-three-fiber"]
     chatui["Chat panel"]
     web --> threeD
@@ -82,7 +82,7 @@ Three properties of that picture are the important ones:
 
 ### `goldseats-web`
 
-Next.js 15 App Router, TypeScript, Tailwind. Server components by default; client
+Next.js 16 App Router, TypeScript, Tailwind. Server components by default; client
 components only where interaction demands it.
 
 | Route | Milestone | Notes |

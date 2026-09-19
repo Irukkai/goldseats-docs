@@ -178,7 +178,7 @@ Resolving it is a [M9](../product/milestones/M9.md) deliverable with a full proc
 
 | | Netlify (new, owned account) | Vercel |
 | --- | --- | --- |
-| Next.js 15 App Router support | Good, via the adapter | First-party, built by the same team |
+| Next.js 16 App Router support | Good, via the adapter | First-party, built by the same team |
 | Continuity with existing DNS | Already a Netlify `CNAME` | New target |
 | Instant rollback | Yes | Yes |
 | Preview deploys per PR | Yes | Yes |

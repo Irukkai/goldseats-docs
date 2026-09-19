@@ -50,7 +50,7 @@ labels: enhancement, needs-triage
 
 Please check these before filing. They're the questions we'd ask anyway.
 
-- [ ] I checked [`product/roadmap.md`](https://github.com/goldseats/goldseats-docs/blob/main/product/roadmap.md)
+- [ ] I checked [`product/roadmap.md`](https://github.com/Irukkai/goldseats-docs/blob/main/product/roadmap.md)
       and this isn't already planned
 - [ ] I checked the "What we're explicitly not building" section and this isn't on it
 - [ ] This is about seats, films, showtimes, or the experience of choosing where to sit —
@@ -67,13 +67,13 @@ Not to discourage you, but to save you writing an issue we'll close with a link:
 
 | Not building | Why | Where it's recorded |
 | --- | --- | --- |
-| Payment processing | Would pull us into PCI scope and change the company's risk profile | [roadmap](https://github.com/goldseats/goldseats-docs/blob/main/product/roadmap.md) |
-| Holding or reserving seats | We don't sell tickets, so we can't hold one | [terms](https://github.com/goldseats/goldseats-docs/blob/main/legal/terms.md) §4 |
-| Scraping theatre sites for availability | Legal and commercial position, not a capacity limit | [ADR-0003](https://github.com/goldseats/goldseats-docs/blob/main/architecture/adr/0003-manual-seed-theatre-data.md) |
-| Reviews, comments, ratings, following users | Letterboxd exists and is good at this | [roadmap](https://github.com/goldseats/goldseats-docs/blob/main/product/roadmap.md) |
-| A native mobile app | Web app is mobile-first; native is a post-launch decision | [roadmap](https://github.com/goldseats/goldseats-docs/blob/main/product/roadmap.md) |
-| Recommending *what* to watch | We recommend seats. That's the product. | [roadmap](https://github.com/goldseats/goldseats-docs/blob/main/product/roadmap.md) |
-| Using a third-party LLM API | Cost predictability and conversation privacy | [ADR-0004](https://github.com/goldseats/goldseats-docs/blob/main/architecture/adr/0004-self-hosted-llm.md) |
+| Payment processing | Would pull us into PCI scope and change the company's risk profile | [roadmap](https://github.com/Irukkai/goldseats-docs/blob/main/product/roadmap.md) |
+| Holding or reserving seats | We don't sell tickets, so we can't hold one | [terms](https://github.com/Irukkai/goldseats-docs/blob/main/legal/terms.md) §4 |
+| Scraping theatre sites for availability | Legal and commercial position, not a capacity limit | [ADR-0003](https://github.com/Irukkai/goldseats-docs/blob/main/architecture/adr/0003-manual-seed-theatre-data.md) |
+| Reviews, comments, ratings, following users | Letterboxd exists and is good at this | [roadmap](https://github.com/Irukkai/goldseats-docs/blob/main/product/roadmap.md) |
+| A native mobile app | Web app is mobile-first; native is a post-launch decision | [roadmap](https://github.com/Irukkai/goldseats-docs/blob/main/product/roadmap.md) |
+| Recommending *what* to watch | We recommend seats. That's the product. | [roadmap](https://github.com/Irukkai/goldseats-docs/blob/main/product/roadmap.md) |
+| Using a third-party LLM API | Cost predictability and conversation privacy | [ADR-0004](https://github.com/Irukkai/goldseats-docs/blob/main/architecture/adr/0004-self-hosted-llm.md) |
 
 If you have **new information** that changes one of these, say what it is. Those decisions
 are genuinely open to a superseding ADR — "it would be easier" isn't new information, but
@@ -112,7 +112,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Check [the roadmap](https://github.com/goldseats/goldseats-docs/blob/main/product/roadmap.md)
+        Check [the roadmap](https://github.com/Irukkai/goldseats-docs/blob/main/product/roadmap.md)
         first — this may already be planned, or already decided against.
 
         Already decided against: payment processing, holding seats, scraping,

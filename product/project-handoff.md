@@ -114,7 +114,8 @@ account during M9 cutover.
   `goldseats-web`, `goldseats-api`, `goldseats-docs`.
 - Repos are PUBLIC (so branch protection and CI are free). No secrets in git;
   only `.env.example` files are committed.
-- Frontend: Next.js 15 (App Router) + TypeScript + Tailwind.
+- Frontend: Next.js (App Router) + TypeScript + Tailwind. Scaffolded on 15,
+  now on 16 — see the amendment in ADR-0002.
 - Backend: Python FastAPI + SQLAlchemy + Alembic, Postgres in production,
   SQLite for local development.
 - Theatre data strategy: manually seed a small set of real theatre layouts
@@ -369,7 +370,7 @@ clean under strict mode across 17 files, 6 pytest tests passing, and
 
 ### `goldseats-web` — done and green
 
-Next.js 15.5.25 App Router, React 19, TypeScript, Tailwind v4. The gold/dark
+Next.js 16 App Router, React 19, TypeScript, Tailwind v4. The gold/dark
 palette is extracted into Tailwind `@theme` tokens in `src/app/globals.css`
 (`ink`, `ink-elevated`, `ink-card`, `cream`, `cream-muted`, `gold`,
 `gold-soft`, `gold-deep`, `shadow-card`, `rounded-card`, `font-display`).
@@ -435,13 +436,34 @@ the two halves of the test toolchain disagreed on a single hoisted esbuild and
 to `vitest@3` resolved it. The lesson: verify with `rm -rf node_modules &&
 npm ci`, not `npm install`.
 
+### Dependency modernization
+
+The initial scaffold pinned versions roughly two years stale, and Dependabot
+answered with fourteen PRs across the two code repos on the first day. Both
+stacks were brought to current in one verified change each, the fourteen PRs
+were closed as superseded, and Dependabot was reconfigured from weekly and
+ungrouped to **monthly, one grouped PR per ecosystem, limit one**.
+
+That also cleared both `npm audit` findings, each of which needed a major bump:
+a high-severity PostCSS issue reachable through Next's build tooling (Next 16)
+and a path traversal in `@vitest/mocker` (Vitest 4). `npm audit` now reports
+zero vulnerabilities.
+
+Three upgrade breakages worth remembering:
+
+- `eslint-config-next` 16 ships native flat config, so the `@eslint/eslintrc`
+  `FlatCompat` shim from the Next template throws on a circular structure.
+- Vitest 4 transforms with oxc, not esbuild, so any `esbuild.*` override is
+  silently ignored. `__dirname` also needs to become `import.meta.dirname`.
+- jsdom 30 requires Node 22 and dies inside undici on Node 20. Held at 29.
+
+Also note that `next build` rewrites `tsconfig.json`, which breaks
+`prettier --check` if you format before building rather than after.
+
 ### Known follow-ups, not blockers
 
-- `npm audit` reports two advisories in `goldseats-web`, both needing a major
-  bump: a moderate path-traversal in `@vitest/mocker` (fixed in vitest 4) and
-  a high-severity PostCSS issue reachable only through Next's build tooling
-  (fixed in Next 16). Next 16 is current; the ADR selecting Next 15 predates
-  it and should be revisited.
+- Local Node is 20.19. Moving the baseline to Node 22 LTS would let jsdom go
+  to 30 and align `@types/node` with the actual runtime.
 - The Formspree form in the legacy landing page still has the placeholder
   action `https://formspree.io/f/YOUR_FORM_ID`. Fix during the M3 migration.
 - The legacy `barung1/goldseats` repo is still active and should be archived.

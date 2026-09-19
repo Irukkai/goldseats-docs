@@ -12,7 +12,7 @@
 
 GoldSeats begins with an unusual amount of technical decision-making already done. Before a
 line of production code exists, we have settled on: three public repos in a GitHub org,
-Next.js 15 with Tailwind, FastAPI with SQLAlchemy 2.0, SQLite locally and Postgres in
+Next.js 16 with Tailwind, FastAPI with SQLAlchemy 2.0, SQLite locally and Postgres in
 production, manually seeded theatre data with no scraping, a self-hosted LLM with tool
 calling, Redis, react-three-fiber, TMDB, and trunk-based development.
 
