@@ -1,0 +1,157 @@
+# CODEOWNERS — example
+#
+# Copy to .github/CODEOWNERS in each repo and adapt the paths.
+# Replace @goldseats-org/... teams and @founder with real handles before committing.
+#
+# How GitHub uses this:
+#  - The LAST matching pattern wins. Order matters, so general rules go first and
+#    specific overrides go last.
+#  - Listed owners are auto-requested as reviewers on any PR touching their paths.
+#  - Combined with "Require review from Code Owners" in the branch protection ruleset,
+#    an owner's approval becomes mandatory for those paths.
+#
+# Caveat worth knowing up front: with a one-person team, CODEOWNERS auto-requests
+# review from yourself, which GitHub silently ignores. That's fine — the file's value
+# right now is that it documents intended ownership, and it starts working the day a
+# second person joins. See engineering/code-review.md for the solo-team process.
+
+
+# ---------------------------------------------------------------------------
+# Default — everything has an owner
+# ---------------------------------------------------------------------------
+*                                   @founder
+
+
+# ===========================================================================
+# goldseats-api
+# ===========================================================================
+
+# The scoring engine is the product. Changes here need the most careful review:
+# a weight change without a before/after distribution gets request-changes.
+/app/ml/                            @founder
+/app/ml/scoring.py                  @founder
+/tests/fixtures/golden/             @founder
+/tests/unit/ml/                     @founder
+
+# Schema changes are permanent in a way most code isn't. Every migration needs a
+# tested downgrade, expand/contract compliance, and SQLite/Postgres parity.
+/alembic/                           @founder
+/app/db/models/                     @founder
+
+# The public API contract. goldseats-web generates its types from this, so a
+# careless response shape becomes permanent the moment the web app depends on it.
+/app/api/                           @founder
+/app/schemas/                       @founder
+
+# Auth. Small mistakes here are large mistakes.
+/app/api/v1/auth.py                 @founder
+/app/domain/auth.py                 @founder
+
+# Chatbot guardrails. The grounding verifier is the most security-relevant code
+# in the repo — it's what stops an invented seat reaching a user.
+/app/chat/                          @founder
+/app/chat/guardrails.py             @founder
+/tests/chat/                        @founder
+
+# Theatre seed data. Hand-authored, and wrong data here means wrong
+# recommendations for real people at real cinemas.
+/seeds/                             @founder
+/app/cli/seed_theatre.py            @founder
+
+# Ingestion — every source has legal obligations attached.
+/app/ingest/                        @founder
+
+# Configuration surface.
+/app/config.py                      @founder
+/.env.example                       @founder
+
+
+# ===========================================================================
+# goldseats-web
+# ===========================================================================
+
+# Design tokens. #FFD700 lives here and nowhere else.
+/tailwind.config.ts                 @founder
+/src/app/layout.tsx                 @founder
+
+# The seat map is the most accessibility-sensitive component in the product:
+# grid semantics, roving focus, and no information by colour alone.
+/src/components/seats/              @founder
+
+# 3D view. Performance budgets and honest geometry both matter here.
+/src/components/seats-3d/           @founder
+/src/lib/three/                     @founder
+
+# Shared UI kit. Changes ripple everywhere.
+/src/components/ui/                 @founder
+
+# API client and generated types.
+/src/lib/api/                       @founder
+/src/types/api.ts                   @founder
+
+/src/lib/env.ts                     @founder
+/.env.example                       @founder
+
+
+# ===========================================================================
+# Shared across all repos
+# ===========================================================================
+
+# CI and anything that can deploy.
+/.github/                           @founder
+/.github/workflows/                 @founder
+
+# Dependency manifests — supply chain.
+/package.json                       @founder
+/package-lock.json                  @founder
+/requirements.txt                   @founder
+/requirements-dev.txt               @founder
+/pyproject.toml                     @founder
+
+
+# ===========================================================================
+# goldseats-docs
+# ===========================================================================
+
+# ADRs are immutable once accepted. A change here is either a typo fix or a
+# superseding decision, and those are different conversations.
+/architecture/adr/                  @founder
+
+# Legal documents. Both need a lawyer's review before launch, and the
+# data-sources policy is binding on every contributor.
+/legal/                             @founder
+
+# Conventions everyone follows.
+/engineering/                       @founder
+
+# Runbooks are read under pressure. Wrong ones are worse than missing ones.
+/operations/runbooks/               @founder
+
+
+# ===========================================================================
+# When a second engineer joins
+# ===========================================================================
+#
+# Replace individual handles with teams so ownership survives someone being on
+# holiday:
+#
+#   @goldseats-org/backend     — api, database, scoring
+#   @goldseats-org/frontend    — web, UI, 3D
+#   @goldseats-org/maintainers — CI, docs, legal, ADRs
+#
+# Example:
+#
+#   *                       @goldseats-org/maintainers
+#   /app/                   @goldseats-org/backend
+#   /src/                   @goldseats-org/frontend
+#   /app/ml/                @goldseats-org/backend @goldseats-org/maintainers
+#   /legal/                 @goldseats-org/maintainers
+#   /architecture/adr/      @goldseats-org/maintainers
+#
+# Two owners on a path means both must approve. Reserve that for genuinely
+# irreversible things — the scoring engine, migrations, and legal documents —
+# rather than applying it broadly, or every PR needs two reviewers and nothing
+# ships.
+#
+# At that point also update engineering/code-review.md, which currently documents
+# a degraded self-review process for a one-person team.
